@@ -85,3 +85,32 @@ response
     "Balance": 40
 }
 ```
+
+## transfer
+
+request
+
+> curl -X POST http://localhost:8000/transfer \
+   -H 'Content-Type: application/json' \
+   -d '{"from":"1000","to":"1001","amount":"20"}'
+
+response
+
+```
+[
+    {
+        "name": "Iqbal",
+        "address": "Indonesia",
+        "phone": "+6211223344",
+        "Number": 1000,
+        "Balance": 20
+    },
+    {
+        "name": "Nabila",
+        "address": "Indonesia",
+        "phone": "+6233445566",
+        "Number": 1001,
+        "Balance": 20
+    }
+]
+```

@@ -12,5 +12,6 @@ func main() {
 	mux.HandleFunc("/deposit", handler.Deposit)
 	mux.HandleFunc("/withdraw", handler.Withdraw)
 	mux.HandleFunc("/create-account", handler.CreateAccount)
+	mux.HandleFunc("/transfer", handler.Transfer)
 	log.Fatal(http.ListenAndServe(":8000", mux))
 }
