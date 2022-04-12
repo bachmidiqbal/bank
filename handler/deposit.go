@@ -1,15 +1,29 @@
 package handler
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/bachmidiqbal/bank/account"
+	"github.com/bachmidiqbal/bank/model"
 	"net/http"
 	"strconv"
 )
 
 func Deposit(w http.ResponseWriter, req *http.Request) {
-	numberqs := req.URL.Query().Get("number")
-	amountqs := req.URL.Query().Get("amount")
+	if req.Method != "POST" {
+		fmt.Fprintf(w, "Invalid http method!")
+		return
+	}
+
+	var reqModel model.Request
+
+	if err := json.NewDecoder(req.Body).Decode(&reqModel); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	numberqs := reqModel.Number
+	amountqs := reqModel.Amount
 
 	if numberqs == "" {
 		fmt.Fprintf(w, "Account number is missing!")

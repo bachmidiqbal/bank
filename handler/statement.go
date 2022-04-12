@@ -8,6 +8,11 @@ import (
 )
 
 func Statement(w http.ResponseWriter, req *http.Request) {
+	if req.Method != "GET" {
+		fmt.Fprintf(w, "Invalid http method!")
+		return
+	}
+
 	numberqs := req.URL.Query().Get("number")
 
 	if numberqs == "" {

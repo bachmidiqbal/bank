@@ -1,8 +1,8 @@
 package bankcore
 
 import (
+	"encoding/json"
 	"errors"
-	"fmt"
 )
 
 type Customer struct {
@@ -41,5 +41,6 @@ func (a *Account) Withdraw(amount float64) error {
 }
 
 func (a *Account) Statement() string {
-	return fmt.Sprintf("%v - %v - %v", a.Number, a.Name, a.Balance)
+	res, _ := json.Marshal(a)
+	return string(res)
 }
