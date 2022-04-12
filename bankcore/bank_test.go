@@ -1,8 +1,8 @@
 package bankcore
 
 import (
-	"testing"
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestAccount(t *testing.T) {
